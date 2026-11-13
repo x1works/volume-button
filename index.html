@@ -7,8 +7,8 @@
     <meta name="description" content="A playful volume experiment. Tilt your phone or roll the ball to find your level." />
     <title>Gravity volume</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='27' fill='%234b75ff'/%3E%3Cpath d='M18 13Q45 27 33 58' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-DtddI4Lx.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-UaNsuU0k.css">
+    <script type="module" crossorigin src="./assets/index-C7bSSFs7.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B8eu3GjS.css">
   </head>
   <body>
     <canvas id="sky" class="sky" aria-hidden="true"></canvas>
@@ -20,7 +20,7 @@
         </svg>
         <h2 id="start-title">Tilt to tune the volume</h2>
         <p id="start-body">Tilt your phone to roll the ball. Turn it upside down to mute.</p>
-        <swc-button id="start-button" variant="accent" size="xl">Start</swc-button>
+        <swc-button id="start-button" variant="accent" size="m">Start tilting</swc-button>
         <p class="start-hint">Turn off silent mode and turn up your volume to hear the music.</p>
       </div>
     </div>
@@ -35,6 +35,7 @@
         <div class="readout">
           <div class="volume-number" aria-hidden="true"><span id="volume">50</span><span class="percent">%</span></div>
           <p id="volume-description">Your demo volume</p>
+          <p id="sound-hint" class="sound-hint" hidden>Can’t hear it? Turn off silent mode and turn up your volume.</p>
         </div>
 
         <div class="toy">
@@ -150,7 +151,6 @@
             <swc-action-button id="neutral" quiet size="l" hidden>Set neutral</swc-action-button>
           </div>
           <p id="status" role="status" aria-live="polite">Tilt gently to roll the ball.</p>
-          <p id="sound-hint" class="sound-hint" hidden>Can’t hear it? Turn off silent mode and turn up your volume.</p>
         </div>
       </section>
       <div class="theme-switcher">
