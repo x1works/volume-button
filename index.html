@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" class="swc-theme swc-theme--light swc-theme--sizeL">
+<html lang="en" class="swc-theme swc-theme--dark swc-theme--sizeL" data-theme="holiday">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#f8f8f8" />
+    <meta name="theme-color" content="#0f2418" />
     <meta name="description" content="A playful volume experiment. Tilt your phone or roll the ball to find your level." />
     <title>Gravity volume</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='27' fill='%234b75ff'/%3E%3Cpath d='M18 13Q45 27 33 58' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-BBvDe_c4.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DcxODaTW.css">
+    <script type="module" crossorigin src="./assets/index-BgBtERJn.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CRr-MPjv.css">
   </head>
   <body>
     <canvas id="sky" class="sky" aria-hidden="true"></canvas>
@@ -137,24 +137,24 @@
             <swc-button id="motion" variant="accent" size="l">Enable motion</swc-button>
             <swc-action-button id="neutral" quiet size="l" hidden>Set neutral</swc-action-button>
           </div>
-          <p id="status" role="status" aria-live="polite">On your phone, enable motion and tilt gently.</p>
+          <p id="status" role="status" aria-live="polite">Tap anywhere to start the music, then tilt gently.</p>
         </div>
       </section>
       <div class="theme-switcher">
         <div id="theme-menu" class="theme-menu" role="menu" aria-label="Theme" hidden>
-          <button type="button" role="menuitemradio" aria-checked="true" data-theme-option="classic" style="--i: 0">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M8 5.5c5 2 1 8.5 6 13" /></svg><span>Classic</span><span class="dot" aria-hidden="true"></span>
-          </button>
-          <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="holiday" style="--i: 1">
+          <button type="button" role="menuitemradio" aria-checked="true" data-theme-option="holiday" style="--i: 0">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14.5" r="6.5" /><path d="M10 8V6h4v2M11 6a1.5 1.5 0 1 1 2 0M6 14l2.5-2 2.5 2 2.5-2 2.5 2 2.5-2" /></svg><span>Holiday</span><span class="dot" aria-hidden="true"></span>
           </button>
-          <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="space" style="--i: 2">
+          <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="space" style="--i: 1">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" /><path d="M3.5 15.5c-1-2 3-5 8.5-7s9.5-2 10 0-3 5-8.5 7-9.5 2-10 0Z" /></svg><span>Space pinball</span><span class="dot" aria-hidden="true"></span>
           </button>
+          <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="classic" style="--i: 2">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M8 5.5c5 2 1 8.5 6 13" /></svg><span>Classic</span><span class="dot" aria-hidden="true"></span>
+          </button>
         </div>
-        <button id="theme-button" class="theme-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu" aria-label="Theme, Classic">
-          <svg id="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M8 5.5c5 2 1 8.5 6 13" /></svg>
-          <span id="theme-label">Classic</span>
+        <button id="theme-button" class="theme-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu" aria-label="Theme, Holiday">
+          <svg id="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14.5" r="6.5" /><path d="M10 8V6h4v2M11 6a1.5 1.5 0 1 1 2 0M6 14l2.5-2 2.5 2 2.5-2 2.5 2 2.5-2" /></svg>
+          <span id="theme-label">Holiday</span>
           <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
         </button>
       </div>
