@@ -7,13 +7,14 @@
     <meta name="description" content="A playful volume experiment. Tilt your phone or roll the ball to find your level." />
     <title>Gravity volume</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='27' fill='%234b75ff'/%3E%3Cpath d='M18 13Q45 27 33 58' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-D1Sm8aTX.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B3vSLn-7.css">
+    <script type="module" crossorigin src="./assets/index-BBvDe_c4.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DcxODaTW.css">
   </head>
   <body>
+    <canvas id="sky" class="sky" aria-hidden="true"></canvas>
     <main class="experiment">
       <header class="masthead">
-        <span class="wordmark">Gravity</span>
+        <span id="wordmark" class="wordmark">Gravity</span>
         <swc-action-button id="sound" quiet size="l">Play sound</swc-action-button>
       </header>
 
@@ -46,27 +47,76 @@
                   <stop offset="1" class="ball-dark" />
                 </radialGradient>
                 <clipPath id="ball-clip"><circle r="26" /></clipPath>
+                <radialGradient id="ornament-fill" cx="32%" cy="28%" r="78%">
+                  <stop offset="0" class="ornament-light" />
+                  <stop offset=".55" class="ornament-middle" />
+                  <stop offset="1" class="ornament-dark" />
+                </radialGradient>
+                <radialGradient id="chrome-fill" cx="34%" cy="26%" r="80%">
+                  <stop offset="0" class="chrome-light" />
+                  <stop offset=".45" class="chrome-middle" />
+                  <stop offset="1" class="chrome-dark" />
+                </radialGradient>
+                <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
                 <linearGradient id="rail-fill" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" class="rail-light" />
                   <stop offset="1" class="rail-dark" />
                 </linearGradient>
               </defs>
               <g id="bowl">
+                <text id="score" class="score" x="200" y="44" text-anchor="middle">Score 0</text>
+                <text id="marquee" class="marquee" x="200" y="84" text-anchor="middle"></text>
                 <path class="bowl-body" d="M38 116 Q200 328 362 116 L362 140 Q200 352 38 140 Z" />
                 <path class="rail" d="M38 116 Q200 328 362 116" />
+                <path class="garland" d="M38 116 Q200 328 362 116" />
                 <path id="filled-rail" class="filled-rail" d="M38 116 Q200 328 362 116" pathLength="100" />
                 <g id="ticks"></g>
+                <g id="trail"></g>
                 <g id="ball-shadow"><ellipse cx="0" cy="0" rx="23" ry="5" /></g>
                 <g id="ball">
-                  <circle class="ball-base" r="26" />
-                  <g clip-path="url(#ball-clip)">
-                    <g id="ball-stripes">
-                      <path class="ball-seam" d="M-12 -28 C22 -12 -26 13 9 29" />
-                      <path class="ball-seam secondary" d="M13 -29 C45 -8 3 12 33 27" />
+                  <g id="ball-body">
+                    <g class="ball-classic">
+                      <circle class="ball-base" r="26" />
+                      <g clip-path="url(#ball-clip)">
+                        <g class="spin">
+                          <path class="ball-seam" d="M-12 -28 C22 -12 -26 13 9 29" />
+                          <path class="ball-seam secondary" d="M13 -29 C45 -8 3 12 33 27" />
+                        </g>
+                      </g>
                     </g>
+                    <g class="ball-ornament">
+                      <circle class="ornament-base" r="26" />
+                      <g clip-path="url(#ball-clip)">
+                        <g class="spin">
+                          <path class="ornament-band" d="M-30 -6 L-22 4 L-14 -6 L-6 4 L2 -6 L10 4 L18 -6 L26 4 L34 -6" />
+                          <path class="ornament-stripe" d="M-30 13 H30" />
+                          <circle class="ornament-dot" cx="-14" cy="-17" r="2.5" />
+                          <circle class="ornament-dot" cx="6" cy="-19" r="2.5" />
+                          <circle class="ornament-dot" cx="-4" cy="20" r="2.5" />
+                          <circle class="ornament-dot" cx="16" cy="18" r="2.5" />
+                        </g>
+                      </g>
+                    </g>
+                    <g class="ball-chrome">
+                      <circle class="chrome-base" r="26" />
+                      <g clip-path="url(#ball-clip)">
+                        <g class="spin">
+                          <path class="chrome-horizon" d="M-30 4 Q0 -4 30 4 L30 9 Q0 1 -30 9 Z" />
+                          <circle class="chrome-star" cx="12" cy="-14" r="2" />
+                        </g>
+                      </g>
+                    </g>
+                    <ellipse class="ball-glint" cx="-9" cy="-12" rx="8" ry="4" transform="rotate(-35)" />
                   </g>
-                  <ellipse class="ball-glint" cx="-9" cy="-12" rx="8" ry="4" transform="rotate(-35)" />
+                  <g class="ornament-cap">
+                    <rect x="-7" y="-33" width="14" height="8" rx="2" />
+                    <path d="M-3 -33 A4 4 0 1 1 3 -33" />
+                  </g>
                 </g>
+                <g id="sparks"></g>
               </g>
             </svg>
           </div>
@@ -90,12 +140,24 @@
           <p id="status" role="status" aria-live="polite">On your phone, enable motion and tilt gently.</p>
         </div>
       </section>
-
-      <footer class="notes">
-        <p>Roll to adjust. Turn upside down to mute.</p>
-        <p>Just an experiment. Controls demo sound, not your phone volume.</p>
-        <p id="local-note" hidden>Phone motion needs a secure web address. You can try touch control here.</p>
-      </footer>
+      <div class="theme-switcher">
+        <div id="theme-menu" class="theme-menu" role="menu" aria-label="Theme" hidden>
+          <button type="button" role="menuitemradio" aria-checked="true" data-theme-option="classic" style="--i: 0">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M8 5.5c5 2 1 8.5 6 13" /></svg><span>Classic</span><span class="dot" aria-hidden="true"></span>
+          </button>
+          <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="holiday" style="--i: 1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14.5" r="6.5" /><path d="M10 8V6h4v2M11 6a1.5 1.5 0 1 1 2 0M6 14l2.5-2 2.5 2 2.5-2 2.5 2 2.5-2" /></svg><span>Holiday</span><span class="dot" aria-hidden="true"></span>
+          </button>
+          <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="space" style="--i: 2">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" /><path d="M3.5 15.5c-1-2 3-5 8.5-7s9.5-2 10 0-3 5-8.5 7-9.5 2-10 0Z" /></svg><span>Space pinball</span><span class="dot" aria-hidden="true"></span>
+          </button>
+        </div>
+        <button id="theme-button" class="theme-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu" aria-label="Theme, Classic">
+          <svg id="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M8 5.5c5 2 1 8.5 6 13" /></svg>
+          <span id="theme-label">Classic</span>
+          <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+        </button>
+      </div>
       <noscript>Turn on JavaScript in your browser to try this volume experiment.</noscript>
     </main>
   </body>
