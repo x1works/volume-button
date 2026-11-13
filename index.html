@@ -7,11 +7,23 @@
     <meta name="description" content="A playful volume experiment. Tilt your phone or roll the ball to find your level." />
     <title>Gravity volume</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='27' fill='%234b75ff'/%3E%3Cpath d='M18 13Q45 27 33 58' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-BgBtERJn.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CRr-MPjv.css">
+    <script type="module" crossorigin src="./assets/index-DtddI4Lx.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-UaNsuU0k.css">
   </head>
   <body>
     <canvas id="sky" class="sky" aria-hidden="true"></canvas>
+    <div id="start" class="start" role="dialog" aria-modal="true" aria-labelledby="start-title" aria-describedby="start-body" hidden>
+      <div class="start-card">
+        <svg class="start-ball" viewBox="0 0 120 70" aria-hidden="true">
+          <path d="M8 18 Q60 82 112 18" />
+          <circle cx="60" cy="40" r="13" />
+        </svg>
+        <h2 id="start-title">Tilt to tune the volume</h2>
+        <p id="start-body">Tilt your phone to roll the ball. Turn it upside down to mute.</p>
+        <swc-button id="start-button" variant="accent" size="xl">Start</swc-button>
+        <p class="start-hint">Turn off silent mode and turn up your volume to hear the music.</p>
+      </div>
+    </div>
     <main class="experiment">
       <header class="masthead">
         <span id="wordmark" class="wordmark">Gravity</span>
@@ -137,7 +149,8 @@
             <swc-button id="motion" variant="accent" size="l">Enable motion</swc-button>
             <swc-action-button id="neutral" quiet size="l" hidden>Set neutral</swc-action-button>
           </div>
-          <p id="status" role="status" aria-live="polite">Tap anywhere to start the music, then tilt gently.</p>
+          <p id="status" role="status" aria-live="polite">Tilt gently to roll the ball.</p>
+          <p id="sound-hint" class="sound-hint" hidden>Can’t hear it? Turn off silent mode and turn up your volume.</p>
         </div>
       </section>
       <div class="theme-switcher">
